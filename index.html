@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AntoB's journey</title>
+    <style>
+        :root {
+            /* Color variables */
+            --background-color: #1a1a1a;
+            --text-color: #ffffff;
+            --secondary-text-color: #cccccc;
+            --column-background-color: #2a2a2a;
+            --link-color: #78fd0c;
+            --link-hover-color: #fff204;
+            --link-description-color: #a0a0a0;
+    
+            /* Font variables */
+            --main-font: Arial, sans-serif;
+            --title-font: 'Helvetica', sans-serif;
+    
+            /* Size variables */
+            --base-font-size: 16px;
+            --h1-font-size: 2.5em;
+            --h2-font-size: 1.8em;
+            --description-font-size: 1.1em;
+            --link-description-font-size: 0.9em;
+    
+            /* Image variables */
+            --image-width: 100%;
+            --image-height: auto;
+            --image-max-height: 500px;
+        }
+    
+        body {
+            font-family: var(--main-font);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            font-size: var(--base-font-size);
+            line-height: 1.6;
+        }
+        /* Define the hover effect within the style tag */
+        .special-inline-link {
+            color: #fff204; /* Original color */
+            text-decoration: none; /* Optional: removes underline */
+        }
+
+        .special-inline-link:hover {
+            color: #126c3c; /* Color on hover */
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        h1 {
+            font-family: var(--title-font);
+            font-size: var(--h1-font-size);
+            text-align: left;
+            margin-bottom: 20px;
+            color: var(--link-color);
+        }
+        .slideshow-container {
+            position: relative;
+            width: var(--image-width);
+            height: var(--image-height);
+            max-height: var(--image-max-height);
+            overflow: hidden;
+            margin-bottom: 20px;
+            min-height: 600px; /* Ensure the container has some height */
+}
+
+        .slideshow-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%; /* Ensure the image fits the height of the container */
+            object-fit: contain; /* Maintain aspect ratio, fits within the container */
+            object-position: left top; /* Align image to the top-left corner */
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+}
+
+        .slideshow-image.active {
+            opacity: 1;
+        }
+        .description {
+            text-align: left;
+            margin-bottom: 40px;
+            font-size: var(--description-font-size);
+            color: var(--secondary-text-color);
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: -10px;
+        }
+        .column {
+            flex: 1;
+            min-width: calc(25% - 20px);
+            padding: 20px;
+            background-color: var(--column-background-color);
+            margin: 10px;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .column h2 {
+            font-family: var(--title-font);
+            font-size: var(--h2-font-size);
+            margin-top: 0;
+        }
+        .column ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .column li {
+            margin-bottom: 20px;
+        }
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: var(--link-hover-color);
+            text-decoration: none;
+        }
+        .link-description {
+            font-size: var(--link-description-font-size);
+            color: var(--link-description-color);
+            margin-top: 5px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: var(--column-background-color);
+        }
+    
+        /* Responsive design */
+        @media screen and (max-width: 1200px) {
+            .column {
+                min-width: calc(50% - 20px);
+            }
+        }
+    
+        @media screen and (max-width: 768px) {
+            :root {
+                --base-font-size: 14px;
+                --h1-font-size: 2.2em;
+                --h2-font-size: 1.6em;
+                --description-font-size: 1em;
+                --image-max-height: 300px;
+            }
+            .column {
+                min-width: calc(100% - 20px);
+            }
+        }
+    
+        @media screen and (max-width: 480px) {
+            :root {
+                --base-font-size: 12px;
+                --h1-font-size: 2em;
+                --h2-font-size: 1.4em;
+                --image-max-height: 200px;
+            }
+            .container {
+                padding: 10px;
+            }
+            .column {
+                padding: 15px;
+            }
+        }
+    </style>
+    
+
+<body>
+    
+    <div class="container">
+        <header>
+            <img src="photos/logo.png" alt="anto.b" width="200">
+        </header>
+        <h1>Antonios' web corner - <a href="https://chatgpt.com/g/g-YmNDVYWZX-antonios-gpt" target="_blank" class="special-inline-link">Talk to me</a></h1>
+
+        <p class="description">Explore a random collection of my images, get to know who I am, and discover some innovative tools I've developed. Dive into a selection of timeless classic games, check my GPT assistants and be sure to bookmark this site because it's here to stay.</p>
+        
+        <div class="slideshow-container">
+            <img src="photos/image1.jpg" alt="Slideshow image" class="slideshow-image active">
+            <img src="photos/image2.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image3.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image4.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image5.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image6.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image7.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image8.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image9.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image10.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image11.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image12.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image13.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image14.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image15.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image16.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image17.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image18.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image19.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image20.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image21.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image22.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image23.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image24.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image25.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image26.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image27.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image28.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image29.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image30.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image31.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image32.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image33.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image34.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos/image35.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image36.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image37.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image38.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image39.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image40.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image41.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image42.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image43.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image44.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image45.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image46.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image47.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image48.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image49.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image50.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image51.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image52.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image53.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image54.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image55.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image56.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image57.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image58.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image59.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image60.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image61.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image62.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image63.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image64.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image65.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image66.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image67.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image68.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image69.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos2/image70.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image71.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image72.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image73.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image74.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image75.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image76.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image77.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image78.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image79.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image80.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image81.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image82.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image83.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image84.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image85.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image86.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image87.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image88.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image89.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image90.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image91.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image92.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image93.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image94.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image95.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image96.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image97.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image98.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image99.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image100.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image101.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image102.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image103.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image104.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos3/image105.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image106.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image107.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image108.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image109.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image110.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image111.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image112.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image113.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image114.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image115.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image116.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image117.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image118.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image119.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image120.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image121.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image122.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image123.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image124.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image125.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image126.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image127.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image128.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image129.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image130.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image131.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image132.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image133.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image134.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image135.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image136.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image137.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image138.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image139.jpg" alt="Slideshow image" class="slideshow-image">
+            <img src="photos4/image140.jpg" alt="Slideshow image" class="slideshow-image">
+            <!-- Add more images as needed -->
+        </div>
+        <div class="row">
+            <div class="column">
+                <h2>me</h2>
+                <ul>
+                    <li>
+                        <a href="papers/resume.pdf" target="_blank">My Resume</a>
+                        <p class="link-description">One of the many resumes I have created.</p>
+                    </li>
+                    <li>
+                        <a href="papers/portfolio.pdf" target="_blank">My Portfolio</a>
+                        <p class="link-description">The last edit of my portfolio</p>
+                    </li>
+                    <li>
+                        <a href="papers/photo_portfolio.pdf" target="_blank">My Photo Portfolio</a>
+                        <p class="link-description">The last edit of my photo portfolio</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="column">
+                <h2>tools</h2>
+                <ul>
+                    <li>
+                        <a href="https://abouris.github.io/cook" target="_blank">Kitchen Tools</a>
+                        <p class="link-description">Make your cooking experience easier and more enjoyable</p>
+                    </li>
+                    <li>
+                        <a href="https://websim.ai/c/hESbVlj34K7trCGKN" target="_blank">Story Generator Portal</a>
+                        <p class="link-description">The magical realm of story creation</p>
+                    </li>
+                    <li>
+                        <a href="https://websim.ai/c/hESbVlj34K7trCGKN" target="_blank">Advanced Story Generator - Craft Your Tale</a>
+                        <p class="link-description">Here, your imagination takes flight</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/color_theory" target="_blank">Color Theory</a>
+                        <p class="link-description">Enhanced Color Harmony Generator</p>
+                    </li>
+                    <li>
+                        <a href="https:abouris.github.io/bc_gen" target="_blank">Business Card Generator</a>
+                        <p class="link-description">Simple and fun business card generator</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/udio_prompt" target="_blank">Write an Udio prompt</a>
+                        <p class="link-description">Write a prompt to generate music with Udio.com - <a href="music/rain_falls_down.mp4" target="_blank">Here is an example</a></p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/ratio" target="_blank">Ratio Calculator</a>
+                        <p class="link-description">Calculate ratios</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/calendar" target="_blank">Calendar Generator</a>
+                        <p class="link-description">Create a Calendar</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/color_match" target="_blank">Color Match</a>
+                        <p class="link-description">Find the perfect color match</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/screen_correction" target="_blank">Screen Correction Patterns</a>
+                        <p class="link-description">Download high resolution patters to correct your screens</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/macbeth_chart" target="_blank">Macbeth Chart</a>
+                        <p class="link-description">The famous Macbeth chart for color correction</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/color_explain" target="_blank">Color Explain</a>
+                        <p class="link-description">Learn about a specific color</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/color_match" target="_blank">Color Match</a>
+                        <p class="link-description">Find the perfect color match</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/markdown" target="_blank">Markdown a text</a>
+                        <p class="link-description">Markdown Transformer</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/pass" target="_blank">Check your Password</a>
+                        <p class="link-description">Analyze your password</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/speaker-test" target="_blank">Check your speakers</a>
+                        <p class="link-description">Check your speakers or headphones with a stereo sound</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/voice-message" target="_blank">Send a voice message</a>
+                        <p class="link-description">Generate and email-send a voice message</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="column">
+                <h2>learn with fun</h2>
+                <ul>
+                    <li>
+                        <a href="https://abouris.github.io/life_game_adv" target="_blank">Game of Life</a>
+                        <p class="link-description">Conway's Game of Life Simulator - google it</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/life_game" target="_blank">Simple Game of Life</a>
+                        <p class="link-description">Simple Conway's Game of Life</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/earth-moon" target="_blank">Earth and Moon</a>
+                        <p class="link-description">Earth and Moon simulation</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/music_pattern" target="_blank">Music Pattern Generator</a>
+                        <p class="link-description">Generate and play with music patterns</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/sphere_music" target="_blank">Musical Spheres</a>
+                        <p class="link-description">Experience the harmony of multidimensional motion with visual ripples <br>Click a button for sound</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/3d_exp" target="_blank">Experience a 3d object</a>
+                        <p class="link-description">Interact with a 3d object</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/solar_system" target="_blank">Solar system</a>
+                        <p class="link-description">Solar system simulator</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/pixel" target="_blank">Pixel Art Generator</a>
+                        <p class="link-description">Advanced Procedural Pixel Art Generator</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/molecules" target="_blank">3d Molecules Simulator</a>
+                        <p class="link-description">Simulator any molecule</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/soundfont" target="_blank">Instruments Sounds</a>
+                        <p class="link-description">SoundFont Keyboard</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/matrix" target="_blank">Matrix Screen Interactive</a>
+                        <p class="link-description">Interact with a matrix screen</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/cloth_simulator" target="_blank">Cloth Simulator</a>
+                        <p class="link-description">Simulate a Cloth</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/receipt_maker" target="_blank">Create a Receipt</a>
+                        <p class="link-description">Have fun creating a receipt<br>Fields are editable<br>Make it creative</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/riples" target="_blank">Ripples for sounds</a>
+                        <p class="link-description">Have fun playing with ripples from music or sounds<br>Check the menu</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/life-weeks" target="_blank">My Life in Weeks</a>
+                        <p class="link-description">How many weeks passed since you were born?</p>
+                    </li>
+                    <li>
+                        <a href="https://websim.ai/c/bhrn3yJQCkdig59ex" target="_blank">ABC Notation Player - AI Generators</a>
+                        <p class="link-description">Generate and play a song</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="column">
+                <h2>games</h2>
+                <ul>
+                    <li>
+                        <a href="https://abouris.github.io/invaders" target="_blank">Space Invaders</a>
+                        <p class="link-description">Space Invaders - The classic game</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/tetris" target="_blank">Soviet Tetris</a>
+                        <p class="link-description">Tetris - The classic game</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/bouncing_balls" target="_blank">Bouncing Balls</a>
+                        <p class="link-description">Bouncing ball simulation</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/hagman" target="_blank">Allien Hagman</a>
+                        <p class="link-description">Hagman - The classic game</p>
+                    </li>
+                    <li>
+                        <a href="https://websim.ai/c/wEV714RWBqm3E8324" target="_blank">Chloe's Maze Generation</a>
+                        <p class="link-description">MazeMasters: Generate and Solve Printable AI Mazes</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/chloe-player" target="_blank">Chloe's music box</a>
+                        <p class="link-description">Chloe's animal stories music</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/adv-maze" target="_blank">Advanced Maze Generation</a>
+                        <p class="link-description">Generate and Solve Advanced Mazes</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/earth-play" target="_blank">Earth play</a>
+                        <p class="link-description">Play with earth, find places and add buildings</p>
+                    </li>
+                    <li>
+                        <a href="https://abouris.github.io/infin-trip/" target="_blank">Infinite trip</a>
+                        <p class="link-description">An infinite trip with ambient AI music</p>
+                    </li>
+                </ul>
+            </div>    
+            <div class="column">
+                    <h2>my openAI GPT assistants</h2>
+                    <ul>
+                        <li>
+                            <a href="https://chatgpt.com/g/g-YmNDVYWZX-antonios-gpt" target="_blank">Talk to me</a>
+                            <p class="link-description">Ask me anything. Integrates and innovates across photography, graphic design, and communication design, requiring expertise in design principles, emerging technologies (AI, AR/VR, 3D printing), and effective communication strategies to create impactful visual narratives and brand identities</p>
+                        </li>
+                        <li>
+                            <a href="https://chatgpt.com/g/g-juJgL3Jj7-medical" target="_blank">Medical</a>
+                            <p class="link-description">Responds to inquiries on medical matters</p>
+                        </li>
+                        <li>
+                            <a href="https://chatgpt.com/g/g-ZfUJzhU0T-agesmart-learning-gpt-assistant" target="_blank">AgeSmart Learning GPT Assistant</a>
+                            <p class="link-description">AgeSmart Learning GPT Assistant delivers personalized answers based on age, educational level, and experience with the topic</p>
+                        </li>
+                        <li>
+                            <a href="https://chatgpt.com/g/g-tHQwte0SZ-design-mentor" target="_blank">Design Mentor</a>
+                            <p class="link-description">A tutor for design professionals</p>
+                        </li>
+                        <li>
+                            <a href="https://chatgpt.com/g/g-KiUswwwGA-personal-chef" target="_blank">Personal Chef</a>
+                            <p class="link-description">Expert in global culinary arts, offering visual and flavorful experiences</p>
+                        </li>
+                        <li>
+                            <a href="https://chatgpt.com/g/g-P74kBifKg-sharp-eye-critic" target="_blank">Sharp Eye Critic</a>
+                            <p class="link-description">Provides critiques on photographic works</p>
+                        </li>
+                        <li>
+                            <a href="https://chatgpt.com/g/g-xNvhtor0I-music-tutor" target="_blank">Music Tutor</a>
+                            <p class="link-description">Explores and studies various music genres, requiring an understanding of musical theory, history, and practical skills in music appreciation and performance</p>
+                        </li>
+                        <li>
+                            <a href="https://chatgpt.com/g/g-EXMDEIjLh-pr-and-media-strategist" target="_blank">PR and Media Strategist</a>
+                            <p class="link-description">Expert in PR and Media Strategy</p>
+                        </li>
+                        <li>
+                            <a href="https://chatgpt.com/g/g-AMlao2YR0-travel-guide" target="_blank">Travel guide</a>
+                            <p class="link-description">An insightful travel companion offering tailored advice and vivid insights</p>
+                        </li>
+                        <li>
+                            <a href="https://chatgpt.com/g/g-7fq2B2pNM-docuwiz" target="_blank">DocuWiz</a>
+                            <p class="link-description">Consistent, clear expert in document analysis</p>
+                        </li>
+                        <li>
+                            <a href="https://chatgpt.com/g/g-I3V6gqcCa-journalist-assistant" target="_blank">Journalist Assistant</a>
+                            <p class="link-description">Investigates and reports on key issues, combining ethical journalism, in-depth research, and awareness of current affairs</p>
+                        </li>
+                        <li>
+                            <a href="https://chatgpt.com/g/g-6gOIp3orf-gift-guru" target="_blank">Gift Guru</a>
+                            <p class="link-description">Curates and recommends unique, personalised gifts for various occasions and recipients</p>
+                        </li>
+                        <li>
+                            <a href="https://chatgpt.com/g/g-K3yHI8oFp-script-evaluator" target="_blank">Script Evaluator</a>
+                            <p class="link-description">Analyzes and assesses scripts for books, theatrical plays, TV series, and films, requiring knowledge of narrative structure, character development, and thematic depth</p>
+                        </li>
+                        <li>
+                            <a href="https://chatgpt.com/g/g-HqcaJR4JC-qrcode-creator" target="_blank">QRCode Creator</a>
+                            <p class="link-description">Friendly guide for creating custom QR codes</p>
+                        </li>
+                        <li>
+                            <a href="https://chatgpt.com/g/g-K4T3ynwiu-threskeia" target="_blank">Θρησκεία</a>
+                            <p class="link-description">Απαντά σε θρησκευτικά ερωτήματα</p>
+                        </li>
+                    </ul>
+            </div>
+           
+        </div>
+        <div class="row">
+            <div class="column">
+           
+            <li>Since its creation in 2024, this page has not been updated and will not be done so in the future. I apologise if there are broken connections.</li>
+            <li>You may download and use my photos. Credit would be nice.</li>
+           <p>&copy; 2024 Antonios Bouris. All rights reserved.</p>
+           <p>What is this all about? <a href="mailto:antob.story@gmail.com">antob.story@gmail.com</a></p>
+            
+           </div>
+       </div>
+    </div>
+    
+    <footer>
+    
+    </footer>
+
+    <script>
+       const images = document.querySelectorAll('.slideshow-image');
+let currentIndex = Math.floor(Math.random() * images.length); // Start with a random index
+
+function changeImage() {
+    images[currentIndex].classList.remove('active');
+    currentIndex = (currentIndex + 1) % images.length;
+    images[currentIndex].classList.add('active');
+}
+
+// Initial setup: Ensure only the image at currentIndex is active
+images.forEach((img, index) => {
+    if (index === currentIndex) {
+        img.classList.add('active');
+    } else {
+        img.classList.remove('active');
+    }
+});
+
+// Change image every 6 seconds
+setInterval(changeImage, 6000);
+
+// Log image elements to console for debugging
+console.log("Images in slideshow:", images);
+    </script>
+</body>
+</html>
