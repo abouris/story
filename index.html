@@ -74,21 +74,24 @@
             min-height: 600px; /* Ensure the container has some height */
 }
 
-        .slideshow-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%; /* Ensure the image fits the height of the container */
-            object-fit: contain; /* Maintain aspect ratio, fits within the container */
-            object-position: left top; /* Align image to the top-left corner */
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
+.slideshow-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: left top;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 1;
 }
 
-        .slideshow-image.active {
-            opacity: 1;
-        }
+.slideshow-image.active {
+    opacity: 1;
+    z-index: 2;
+}
+
         .description {
             text-align: left;
             margin-bottom: 40px;
@@ -604,6 +607,7 @@
         <div class="row">
             <div class="column">
             <p>Since its creation in 2024, there has been no update to this page and there won't be one in the future. Apologies for broken links.</p>
+            <p>Right click to download an image. Credit &copy;Antonios Bouris. </p>
            <p>&copy; 2024 Antonios Bouris</p>
            <p><a href="mailto:antob.story@gmail.com">antob.story@gmail.com</a></p>
             
@@ -616,16 +620,36 @@
     </footer>
 
     <script>
-       const images = document.querySelectorAll('.slideshow-image');
+   const images = document.querySelectorAll('.slideshow-image');
 let currentIndex = Math.floor(Math.random() * images.length); // Start with a random index
+let previousIndex = currentIndex; // Keep track of the previous image index
+let usedIndices = [currentIndex]; // Store the indices that have been used
 
 function changeImage() {
-    images[currentIndex].classList.remove('active');
-    currentIndex = (currentIndex + 1) % images.length;
+    // Fade out the current image
+    images[previousIndex].classList.remove('active');
+
+    // Choose a new random index that hasn't been used yet
+    do {
+        currentIndex = Math.floor(Math.random() * images.length);
+    } while (usedIndices.includes(currentIndex) && usedIndices.length < images.length);
+
+    // Add the new index to the used list
+    usedIndices.push(currentIndex);
+
+    // If all images have been shown, reset the list
+    if (usedIndices.length >= images.length) {
+        usedIndices = [currentIndex];
+    }
+
+    // Fade in the next image
     images[currentIndex].classList.add('active');
+
+    // Update the previous index
+    previousIndex = currentIndex;
 }
 
-// Initial setup: Ensure only the image at currentIndex is active
+// Initial setup: Ensure only the image at currentIndex is visible
 images.forEach((img, index) => {
     if (index === currentIndex) {
         img.classList.add('active');
@@ -634,11 +658,9 @@ images.forEach((img, index) => {
     }
 });
 
-// Change image every 6 seconds
-setInterval(changeImage, 6000);
+// Change image every 8 seconds
+setInterval(changeImage, 8000);
 
-// Log image elements to console for debugging
-console.log("Images in slideshow:", images);
     </script>
 </body>
 </html>
