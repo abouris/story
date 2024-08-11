@@ -70,7 +70,7 @@
             height: var(--image-height);
             max-height: var(--image-max-height);
             overflow: hidden;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
             min-height: 600px; /* Ensure the container has some height */
 }
 
@@ -139,6 +139,15 @@
             color: var(--link-description-color);
             margin-top: 5px;
         }
+        .highlight {
+            background-color: #ff2a00; /* Orange background */
+            color: #121111; /* White text */
+            font-weight: bold; /* Make the text bold */
+            padding: 1px 1px; /* Add some padding to make it stand out */
+            border-radius: 3px; /* Optional: Add rounded corners */
+}
+
+
         footer {
             text-align: center;
             margin-top: 40px;
@@ -187,12 +196,22 @@
     
     <div class="container">
         <header>
-            <img src="photos/logo.png" alt="anto.b" width="200">
+            <img src="photos/logo.png" alt="anto.b" width="200" style="margin-right: 20px;">
+            <a href="photos/qrantob.png" target="_blank">
+            <img src="photos/qrantob.png" alt="anto.b" width="100" style="margin-right: 20px;"> </a>
+            <p id="counter"></p>
+
+
+        
+            <p><input type="text" id="searchInput" placeholder="Search this page...">
+            <button onclick="searchPage()">Search</button></p>
+            <p id="searchResult"></p>
+
+            
         </header>
         <h1>Antonios' web corner - <a href="https://chatgpt.com/g/g-YmNDVYWZX-antonios-gpt" target="_blank" class="special-inline-link">Talk to me</a></h1>
 
-        <p class="description">Enjoy a random collection of my photos, get to know who I am, and discover some innovative tools I've developed. Dive into a selection of timeless classic games, check my GPT assistants and be sure to bookmark this site because it's here to stay.</p>
-        
+        <p class="description">Enjoy a random collection of my photos and discover some hopefully useful tools I've developed or modified. Dive into a selection of timeless classic games, check my GPT assistants and be sure to <a href="#" onclick="bookmarkPage()">bookmark</a> this page because it's here to stay.</p>
         <div class="slideshow-container">
             <img src="photos/image1.jpg" alt="Slideshow image" class="slideshow-image active">
             <img src="photos/image2.jpg" alt="Slideshow image" class="slideshow-image">
@@ -337,23 +356,7 @@
             <!-- Add more images as needed -->
         </div>
         <div class="row">
-            <div class="column">
-                <h2>me</h2>
-                <ul>
-                    <li>
-                        <a href="papers/resume.pdf" target="_blank">My Resume</a>
-                        <p class="link-description">One of the many resumes I have created.</p>
-                    </li>
-                    <li>
-                        <a href="papers/portfolio.pdf" target="_blank">My Portfolio</a>
-                        <p class="link-description">The last edit of my portfolio</p>
-                    </li>
-                    <li>
-                        <a href="papers/photo_portfolio.pdf" target="_blank">My Photo Portfolio</a>
-                        <p class="link-description">The last edit of my photo portfolio</p>
-                    </li>
-                </ul>
-            </div>
+            
             <div class="column">
                 <h2>tools</h2>
                 <ul>
@@ -630,6 +633,23 @@
                         </li>
                     </ul>
             </div>
+            <div class="column">
+                <h2>me</h2>
+                <ul>
+                    <li>
+                        <a href="papers/resume.pdf" target="_blank">My Resume</a>
+                        <p class="link-description">A version of my resume</p>
+                    </li>
+                    <li>
+                        <a href="papers/portfolio.pdf" target="_blank">My Portfolio</a>
+                        <p class="link-description">The last edit of my portfolio</p>
+                    </li>
+                    <li>
+                        <a href="papers/photo_portfolio.pdf" target="_blank">My Photo Portfolio</a>
+                        <p class="link-description">The last edit of my photo portfolio</p>
+                    </li>
+                </ul>
+            </div>
            
         </div>
         <div class="row">
@@ -637,6 +657,8 @@
             <p>Since its creation in 2024, there has been no update to this page and there won't be one in the future. Apologies for broken links.</p>
             <p> Right-click to download an image. Credit &copy; Antonios Bouris. </p>
            <p>&copy; 2024 Antonios Bouris</p>
+           <p><a href="#" onclick="sendPageLinkByEmail()">Send this page URL by email</a></p>
+           <p><a href="#" onclick="bookmarkPage()">Bookmark this page</a></p>
            <p><a href="mailto:antob.story@gmail.com">antob.story@gmail.com</a></p>
             
            </div>
@@ -676,6 +698,115 @@ function changeImage() {
     // Update the previous index
     previousIndex = currentIndex;
 }
+
+function sendPageLinkByEmail() {
+    const pageURL = window.location.href;
+    const subject = "Check out this page!";
+    const body = `Save this page:\n\n${pageURL}\n\nBest regards,`;
+
+    const mailtoLink = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+}
+
+function bookmarkPage() {
+    const pageURL = window.location.href;
+    const pageTitle = document.title;
+
+    if (window.sidebar && window.sidebar.addPanel) { 
+        // Firefox <=22
+        window.sidebar.addPanel(pageTitle, pageURL, '');
+    } else if (window.external && ('AddFavorite' in window.external)) { 
+        // IE Favorites
+        window.external.AddFavorite(pageURL, pageTitle);
+    } else {
+        // Other browsers (mainly modern browsers)
+        alert('Press ' + (navigator.userAgent.toLowerCase().indexOf('mac') != -1 ? 'Cmd' : 'Ctrl') + '+D to bookmark this page.');
+    }
+}
+function searchPage() {
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    const elements = document.querySelectorAll('body *:not(script):not(style):not(noscript)');
+
+    // Remove previous highlights
+    document.querySelectorAll('.highlight').forEach(el => {
+        el.replaceWith(document.createTextNode(el.textContent));
+    });
+
+    // Highlight new search term
+    elements.forEach(element => {
+        highlightText(element, searchTerm);
+    });
+
+    const pageContent = document.body.innerText.toLowerCase();
+    if (!pageContent.includes(searchTerm)) {
+        document.getElementById('searchResult').innerText = `No results found for "${searchTerm}".`;
+    } else {
+        document.getElementById('searchResult').innerText = `Found "${searchTerm}" on this page.`;
+    }
+}
+
+function highlightText(element, searchTerm) {
+    if (element.children.length === 0 && element.textContent.toLowerCase().includes(searchTerm)) {
+        const innerHTML = element.innerHTML;
+        const regex = new RegExp(`(${searchTerm})`, 'gi');
+        element.innerHTML = innerHTML.replace(regex, `<span class="highlight">$1</span>`);
+    } else {
+        Array.from(element.childNodes).forEach(child => {
+            if (child.nodeType === Node.TEXT_NODE && child.textContent.toLowerCase().includes(searchTerm)) {
+                const span = document.createElement('span');
+                span.className = 'highlight';
+                span.textContent = child.textContent.match(new RegExp(searchTerm, 'i'))[0];
+                const splitText = child.textContent.split(new RegExp(searchTerm, 'i'));
+                const fragment = document.createDocumentFragment();
+                fragment.appendChild(document.createTextNode(splitText[0]));
+                fragment.appendChild(span);
+                fragment.appendChild(document.createTextNode(splitText[1]));
+                child.replaceWith(fragment);
+            } else if (child.nodeType === Node.ELEMENT_NODE) {
+                highlightText(child, searchTerm);
+            }
+        });
+    }
+}
+
+        function updateCounter() {
+            // Set the specific date you want to count from
+            const startDate = new Date("March 2, 1963"); // Change this to your specific date
+            
+            // Get the current date
+            const currentDate = new Date();
+
+            // Calculate year difference
+            let years = currentDate.getFullYear() - startDate.getFullYear();
+
+            // Calculate month difference
+            let months = currentDate.getMonth() - startDate.getMonth();
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+
+            // Calculate day difference
+            let days = currentDate.getDate() - startDate.getDate();
+            if (days < 0) {
+                months--;
+                if (months < 0) {
+                    years--;
+                    months += 11;
+                }
+                const previousMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate();
+                days += previousMonth;
+            }
+
+            // Update the counter element
+            document.getElementById("counter").textContent = `${years} years, ${months} months, and ${days} days since ${startDate.toDateString()}`;
+        }
+
+        // Call the updateCounter function when the page loads
+        document.addEventListener("DOMContentLoaded", function() {
+            updateCounter();
+        });
+
 
 // Initial setup: Ensure only the image at currentIndex is visible
 images.forEach((img, index) => {
