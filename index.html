@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>AntoB</title>
     <style>
         :root {
@@ -52,7 +53,7 @@
         }
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1920px;
             margin: 0 auto;
             padding: 20px;
             box-sizing: border-box;
@@ -71,7 +72,7 @@
             max-height: var(--image-max-height);
             overflow: hidden;
             margin-bottom: 40px;
-            min-height: 600px; /* Ensure the container has some height */
+            min-height: 800px; /* Ensure the container has some height */
 }
 
         .slideshow-image {
@@ -154,6 +155,23 @@
             padding: 20px;
             background-color: var(--column-background-color);
         }
+        #socialMediaLinks {
+            display: flex;
+            gap: 15px;
+            justify-content: left;
+            margin-top: 20px;
+        }
+
+        #socialMediaLinks a {
+            color: #05536a; /* Default icon color */
+            font-size: 2em; /* Icon size */
+            transition: color 0.3s ease; /* Smooth color transition on hover */
+        }
+
+        #socialMediaLinks a:hover {
+            color: #e2f445; /* Icon color on hover */
+        }
+
     
         /* Responsive design */
         @media screen and (max-width: 1200px) {
@@ -190,7 +208,9 @@
             }
         }
     </style>
-    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    </head>
 
 <body>
     
@@ -211,7 +231,7 @@
         </header>
         <h1>Antonios' web corner - <a href="https://chatgpt.com/g/g-YmNDVYWZX-antonios-gpt" target="_blank" class="special-inline-link">Talk to me</a></h1>
 
-        <p class="description">Enjoy a random collection of my photos and discover some hopefully useful tools I've developed or modified. Dive into a selection of timeless classic games, check my GPT assistants and be sure to <a href="#" onclick="bookmarkPage()">bookmark</a> this page because it's here to stay.</p>
+        <br class="description">Enjoy a random collection of my photos and discover some hopefully useful tools I've developed or modified. <p>Dive into a selection of timeless classic games, check my GPT assistants and be sure to <a href="#" onclick="bookmarkPage()">bookmark</a> this page because it's here to stay.</br>
         <div class="slideshow-container">
             <img src="photos/image1.jpg" alt="Slideshow image" class="slideshow-image active">
             <img src="photos/image2.jpg" alt="Slideshow image" class="slideshow-image">
@@ -633,9 +653,22 @@
                         </li>
                     </ul>
             </div>
+            
+            <div class="column">
+                <h2>about</h2>
+                <ul>
+                    <p class="link-description">Since early 90s, I’ve stood at the vanguard of visual storytelling. With titles ranging from Communication Designer and Creative Strategist to Senior Graphic Designer, Prompt Engineer, and Brand Manager, my journey in the design world has been diverse and enriching. My educational journey began even earlier, in 1994, when I nurtured a profound passion for design, creative thinking, photography, and the nuances of digital culture.</p>
+                        <p class="link-description">In recent years, I’ve ventured into the exhilarating domain of artificial intelligence, marrying its immense potential with my deeply-rooted design philosophy. My fervor for Design Thinking remains unabated, and I’m always in sync with the pulse of the latest technological advancements. My approach isn’t confined by convention. I possess an unquenchable curiosity about fresh design techniques and the ever-shifting landscape of technology.</p>
+                        <p class="link-description">At the crossroads of art, technology, and AI, I persistently push boundaries, shape paradigms, and champion innovation. Dive into my world, where artistry meets algorithm, and watch as traditional design transforms under the lens of the future.</p>
+                        <p class="link-description">I am a Nikon, Apple, Linux, Quest, and Prusa guy.</p>
+                </ul>
+            </div>
             <div class="column">
                 <h2>me</h2>
                 <ul>
+                    <li>
+                        <img src="photos/mypic.jpg" width="100" height="auto">
+                    </li>
                     <li>
                         <a href="papers/resume.pdf" target="_blank">My Resume</a>
                         <p class="link-description">A version of my resume</p>
@@ -648,18 +681,41 @@
                         <a href="papers/photo_portfolio.pdf" target="_blank">My Photo Portfolio</a>
                         <p class="link-description">The last edit of my photo portfolio</p>
                     </li>
+                   
                 </ul>
             </div>
-           
         </div>
         <div class="row">
             <div class="column">
             <p>Since its creation in 2024, there has been no update to this page and there won't be one in the future. Apologies for broken links.</p>
             <p> Right-click to download an image. Credit &copy; Antonios Bouris. </p>
+            <p> Click the <a href="photos/qrantob.png" target="_blank">QRcode</a> to open it in a new tab. </p>
            <p>&copy; 2024 Antonios Bouris</p>
            <p><a href="#" onclick="sendPageLinkByEmail()">Send this page URL by email</a></p>
            <p><a href="#" onclick="bookmarkPage()">Bookmark this page</a></p>
            <p><a href="mailto:antob.story@gmail.com">antob.story@gmail.com</a></p>
+           <div id="socialMediaLinks">
+            <a href="https://linkedin.com/in/antoniosbouris" target="_blank">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+            <a href="https://facebook.com/antonios.bouris" target="_blank">
+                <i class="fa-brands fa-facebook"></i>
+            </a>
+            <a href="https://x.com/_antonios" target="_blank">
+                <i class="fa-brands fa-square-x-twitter"></i>
+            </a>
+            <a href="https://instagram.com/antoniosbouris" target="_blank">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://youtube.com/antoniosbouris" target="_blank">
+                <i class="fa-brands fa-square-youtube"></i>
+            <a href="https://github.com/abouris" target="_blank">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://soundcloud.com/antobouris" target="_blank">
+                <i class="fa-brands fa-soundcloud"></i>
+        </div>
+        
             
            </div>
        </div>
