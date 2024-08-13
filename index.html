@@ -185,7 +185,7 @@
         }
         .highlight {
             background-color: #ff2a00; /* Orange background */
-            color: #121111; /* White text */
+            color: #121111; /* Dark text */
             font-weight: bold; /* Make the text bold */
             padding: 1px 1px; /* Add some padding to make it stand out */
             border-radius: 3px; /* Optional: Add rounded corners */
@@ -289,7 +289,8 @@
 
         
             <p><input type="text" id="searchInput" placeholder="Search this page...">
-            <button onclick="searchPage()">Search</button></p>
+            <button onclick="searchPage()">Search</button>
+            <button onclick="clearHighlights()">Clear</button></p>
             <p id="searchResult"></p>
 
             
@@ -969,49 +970,70 @@ function bookmarkPage() {
 }
 function searchPage() {
     const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-    const elements = document.querySelectorAll('body *:not(script):not(style):not(noscript)');
+    let matchCount = 0;
 
     // Remove previous highlights
-    document.querySelectorAll('.highlight').forEach(el => {
-        el.replaceWith(document.createTextNode(el.textContent));
-    });
+    clearHighlights();
 
-    // Highlight new search term
-    elements.forEach(element => {
-        highlightText(element, searchTerm);
-    });
+    // Highlight and count the occurrences
+    matchCount = highlightAndCount(document.body, searchTerm);
 
-    const pageContent = document.body.innerText.toLowerCase();
-    if (!pageContent.includes(searchTerm)) {
+    // Display the result
+    if (matchCount === 0) {
         document.getElementById('searchResult').innerText = `No results found for "${searchTerm}".`;
     } else {
-        document.getElementById('searchResult').innerText = `Found "${searchTerm}" on this page.`;
+        document.getElementById('searchResult').innerText = `Found ${matchCount} result(s) for "${searchTerm}" on this page.`;
     }
 }
 
-function highlightText(element, searchTerm) {
-    if (element.children.length === 0 && element.textContent.toLowerCase().includes(searchTerm)) {
-        const innerHTML = element.innerHTML;
-        const regex = new RegExp(`(${searchTerm})`, 'gi');
-        element.innerHTML = innerHTML.replace(regex, `<span class="highlight">$1</span>`);
-    } else {
-        Array.from(element.childNodes).forEach(child => {
-            if (child.nodeType === Node.TEXT_NODE && child.textContent.toLowerCase().includes(searchTerm)) {
-                const span = document.createElement('span');
-                span.className = 'highlight';
-                span.textContent = child.textContent.match(new RegExp(searchTerm, 'i'))[0];
-                const splitText = child.textContent.split(new RegExp(searchTerm, 'i'));
-                const fragment = document.createDocumentFragment();
-                fragment.appendChild(document.createTextNode(splitText[0]));
-                fragment.appendChild(span);
-                fragment.appendChild(document.createTextNode(splitText[1]));
-                child.replaceWith(fragment);
-            } else if (child.nodeType === Node.ELEMENT_NODE) {
-                highlightText(child, searchTerm);
-            }
+function clearHighlights() {
+    // Traverse the entire document body and remove highlights
+    const highlightedElements = document.querySelectorAll('.highlight');
+    highlightedElements.forEach(el => {
+        const parent = el.parentNode;
+        parent.replaceChild(document.createTextNode(el.textContent), el);
+        parent.normalize(); // Normalize text nodes to merge any adjacent text nodes
+    });
+    document.getElementById('searchResult').innerText = '';
+}
+
+function highlightAndCount(element, searchTerm) {
+    let count = 0;
+    const regex = new RegExp(`\\b${searchTerm}\\b`, 'gi'); // Regex to match whole words only
+
+    if (element.nodeType === Node.TEXT_NODE) {
+        const text = element.textContent;
+        const matches = text.match(regex);
+
+        if (matches) {
+            const originalText = element.textContent;
+            const highlightedHTML = originalText.replace(regex, match => `<span class="highlight">${match}</span>`);
+            const wrapper = document.createElement('span');
+            wrapper.innerHTML = highlightedHTML;
+
+            element.replaceWith(wrapper);
+
+            count += matches.length;
+        }
+    } else if (element.nodeType === Node.ELEMENT_NODE) {
+        element.childNodes.forEach(child => {
+            count += highlightAndCount(child, searchTerm);
         });
     }
+
+    return count;
 }
+
+            function clearHighlights() {
+                // Remove all highlighted elements
+                document.querySelectorAll('.highlight').forEach(el => {
+                    el.replaceWith(document.createTextNode(el.textContent));
+                });
+                // Clear the search input field
+                document.getElementById('searchInput').value = '';
+                // Clear the search result message
+                document.getElementById('searchResult').innerText = '';
+            }
 
         function updateCounter() {
             // Set the specific date you want to count from
