@@ -99,6 +99,49 @@
             font-size: var(--description-font-size);
             color: var(--secondary-text-color);
         }
+        /* Updated styling for the popup */
+        #datePopup {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            padding: 20px;
+            background-color: var(--column-background-color); /* Use the column background color */
+            border: 2px solid var(--link-color); /* Use link color for border */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Darker shadow for better contrast */
+            z-index: 1000;
+            text-align: center;
+            color: var(--text-color); /* Ensure text color matches the rest of the site */
+        }
+
+        #datePopup button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: var(--link-color); /* Button background using link color */
+            color: black; /* Button text color set to black */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #datePopup button:hover {
+            background-color: var(--link-hover-color); /* Button hover color */
+        }
+
+        /* Overlay to cover the page when the popup is visible */
+        #overlay {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Dark semi-transparent overlay */
+            z-index: 999;
+        }
+
         .row {
             display: flex;
             flex-wrap: wrap;
@@ -191,7 +234,9 @@
         #scrollTopBtn:hover {
             background-color: #333;
         }
-
+        html {
+        scroll-behavior: smooth; /* Enable smooth scrolling */
+    }
     
         /* Responsive design */
         @media screen and (max-width: 1200px) {
@@ -776,6 +821,50 @@
     <footer>
     
     </footer>
+
+    <div id="overlay"></div>
+
+    <div id="datePopup">
+        <p id="popupMessage">Special event happening today!</p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Define your target dates and messages
+        const popups = [
+            { month: 3, day: 2, message: "Happy Birthday Antonios!" },
+            { month: 1, day: 1, message: "Happy New Year!" },
+            { month: 11, day: 25, message: "Happy Birthday Eleni!" },
+            { month: 3, day: 1, message: "Happy Birthday Chloe!" },
+            { month: 10, day: 30, message: "Happy Birthday Mike!" },
+            { month: 9, day: 14, message: "Exit day!" },
+            // Add more dates and messages as needed
+        ];
+
+        const currentDate = new Date();
+        const currentMonth = currentDate.getMonth() + 1; // JavaScript months are 0-11, so add 1
+        const currentDay = currentDate.getDate();
+
+        // Check if today's date matches any of the dates in the array
+        const todayPopup = popups.find(popup => popup.month === currentMonth && popup.day === currentDay);
+
+        if (todayPopup) {
+            document.getElementById('popupMessage').textContent = todayPopup.message;
+            showPopup();
+        }
+    });
+
+    function showPopup() {
+        document.getElementById('datePopup').style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+    }
+
+    function closePopup() {
+        document.getElementById('datePopup').style.display = 'none';
+        document.getElementById('overlay').style.display = 'none';
+    }
+</script>
 
     
     
