@@ -171,6 +171,26 @@
         #socialMediaLinks a:hover {
             color: #e2f445; /* Icon color on hover */
         }
+    
+        #scrollTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 160px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: #b3e804;
+            color: rgb(0, 0, 0);
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 10px;
+            transition: opacity 0.3s;
+        }
+        #scrollTopBtn:hover {
+            background-color: #333;
+        }
 
     
         /* Responsive design */
@@ -673,7 +693,7 @@
                     <p class="link-description">Since early 90s, I’ve stood at the vanguard of visual storytelling. With titles ranging from Communication Designer and Creative Strategist to Senior Graphic Designer, Prompt Engineer, and Brand Manager, my journey in the design world has been diverse and enriching. My educational journey began even earlier, in 1994, when I nurtured a profound passion for design, creative thinking, photography, and the nuances of digital culture.</p>
                     <p class="link-description">In recent years, I’ve ventured into the exhilarating domain of artificial intelligence, marrying its immense potential with my deeply-rooted design philosophy. My fervor for Design Thinking remains unabated, and I’m always in sync with the pulse of the latest technological advancements. My approach isn’t confined by convention. I possess an unquenchable curiosity about fresh design techniques and the ever-shifting landscape of technology.</p>
                     <p class="link-description">At the crossroads of art, technology, and AI, I persistently push boundaries, shape paradigms, and champion innovation. Dive into my world, where artistry meets algorithm, and watch as traditional design transforms under the lens of the future.</p>
-                    <p class="link-description">I am a Nikon, Apple, Linux, Quest, and Prusa guy.</p>
+                    <p class="link-description">I am a Nikon, Kodachrome, Diesel, Parajumpers, Converse, Dr Martens, Adobe, Apple, Linux, Quest, Prusa, Midjourney and openAI guy 😎</p>
                 </ul>
             </div>
             <div class="column">
@@ -740,11 +760,13 @@
             </a>
             <a href="https://youtube.com/antoniosbouris" target="_blank">
                 <i class="fa-brands fa-square-youtube"></i>
+            </a>
             <a href="https://github.com/abouris" target="_blank">
                 <i class="fa-brands fa-github"></i>
             </a>
             <a href="https://soundcloud.com/antobouris" target="_blank">
                 <i class="fa-brands fa-soundcloud"></i>
+            </a>
         </div>
         
             
@@ -755,6 +777,9 @@
     <footer>
     
     </footer>
+
+    
+    
     <script src="https://cdn.botpress.cloud/webchat/v0/inject.js"></script>
 <script>
   window.botpressWebChat.init({
@@ -778,6 +803,27 @@
       "showPoweredBy": false
   });
 </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<button id="scrollTopBtn" title="Go to top"><i class="fa fa-arrow-up"></i></button>
+<script>
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    window.onscroll = function() { scrollFunction(); };
+    
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            scrollTopBtn.style.display = "block";
+        } else {
+            scrollTopBtn.style.display = "none";
+        }
+    }
+
+    scrollTopBtn.addEventListener('click', () => {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+    });
+</script>
+
 
     <script>
    const images = document.querySelectorAll('.slideshow-image');
@@ -881,7 +927,7 @@ function highlightText(element, searchTerm) {
 
         function updateCounter() {
             // Set the specific date you want to count from
-            const startDate = new Date("March 2, 1963"); // Change this to your specific date
+            const startDate = new Date("August 12, 2024"); // Change this to your specific date
             
             // Get the current date
             const currentDate = new Date();
