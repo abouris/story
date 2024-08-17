@@ -354,17 +354,21 @@
 
     <div class="container">
         <header>
-            <img src="photos/logo.png" alt="anto.b" width="200" style="margin-right: 20px;">
+            <p><img src="photos/logo.png" alt="anto.b" width="200" style="margin-right: 20px;">
             <a href="photos/qrantob.png" target="_blank">
-            <img src="photos/qrantob.png" alt="anto.b" width="100" style="margin-right: 20px;"> </a>
-            <p id="counter"></p>
-            <button id="openDescriptionPopup" style="background-color: #ffe100; color: #000000;">About This Site</button>
+            <img src="photos/qrantob.png" alt="anto.b" width="100" style="margin-right: 20px;"></a><span id="counter"></span></p>
+            <div id="searchContainer">
+                <input type="text" id="searchInput" placeholder="Search this page...">
+                <button onclick="searchPage()">Search</button>
+                <button onclick="clearHighlights()">Clear</button>
+                <span id="searchResult"></span> <!-- Changed to <span> for inline display -->
+            </div>
+            
+            
+            <p><button id="openDescriptionPopup" style="background-color: #ffe100; color: #000000;">About This Site</button></p>
 
 
-            <p><input type="text" id="searchInput" placeholder="Search this page...">
-            <button onclick="searchPage()">Search</button>
-            <button onclick="clearHighlights()">Clear</button></p>
-            <p id="searchResult"></p>
+           
 
             
         </header>
@@ -1397,7 +1401,7 @@ function highlightAndCount(element, searchTerm) {
 
         function updateCounter() {
             // Set the specific date you want to count from
-            const startDate = new Date("August 12, 2024"); // Change this to your specific date
+            const startDate = new Date("August 17, 2024"); // Change this to your specific date
             
             // Get the current date
             const currentDate = new Date();
@@ -1425,7 +1429,7 @@ function highlightAndCount(element, searchTerm) {
             }
 
             // Update the counter element
-            document.getElementById("counter").textContent = `${years} years, ${months} months, and ${days} days since ${startDate.toDateString()}`;
+            document.getElementById("counter").textContent = `${years} years, ${months} months, and ${days} days since site's creation, ${startDate.toDateString()}`;
         }
 
         // Call the updateCounter function when the page loads
