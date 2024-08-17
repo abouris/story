@@ -121,9 +121,9 @@
         .description-donation {
             text-align: left;
             margin-bottom: 40px;
-            margin-right: 500px;
+            margin-right: 400px;
             font-size: 1.2em;
-            color: #fff204;;
+            color: #e4e2c3;;
         }
         /* Updated styling for the popup */
         #datePopup {
@@ -355,10 +355,11 @@
     
 
     <div class="container">
-        <header>
+        <header  role="banner">
             <p><img src="photos/logo.png" alt="anto.b" width="200" style="margin-right: 20px;">
             <a href="photos/qrantob.png" target="_blank">
-            <img src="photos/qrantob.png" alt="anto.b" width="100" style="margin-right: 20px;"></a><span id="counter"></span></p>
+            <img src="photos/qrantob.png" alt="anto.b" width="100" style="margin-right: 20px;"></a>
+            <span id="counter"></span></p>
             <div id="searchContainer">
                 <input type="text" id="searchInput" placeholder="Search this page...">
                 <button onclick="searchPage()">Search</button>
@@ -367,19 +368,14 @@
             </div>
             
             
-            <p><button id="openDescriptionPopup" style="background-color: #ffe100; color: #000000;">About This Site</button></p>
-
-
            
-
             
         </header>
         <h1>Antonios' web corner - <a href="https://chatgpt.com/g/g-YmNDVYWZX-antonios-gpt" target="_blank" class="special-inline-link">Talk to me</a></h1>
 
-        <div class="description">Enjoy a random collection of my photos and discover some valuable tools I've developed or modified. <br>Dive into a selection of timeless classic games, check my GPT assistants, download some work and...<br> be sure to <a href="#" onclick="bookmarkPage()">bookmark</a> this page because it's here to stay, at least as far as entropy allows.</br>
-            <p class="description-donation">This website and every connected page were created by me with a purpose in mind.<br> Although everything is free, if you enjoy it and the connections are useful to you, please consider making a <a href="https://www.globalgiving.org" target="_blank">donation to a deserving cause.</a>
-            </p>
-        
+        <div class="description">Enjoy a random collection of my photos and discover some valuable tools I've developed or modified. <br>Dive into a selection of timeless classic games, check my GPT assistants, download some work and...<br> be sure to <a href="#" onclick="bookmarkPage()">bookmark</a> this page because it's here to stay, at least as far as entropy allows. 😊</br>
+            <p><button id="openDescriptionPopup" style="background-color: #ffe100; color: #000000;">About this site</button></p>
+    
         </div>
             
         
@@ -779,7 +775,8 @@
             <img src="photos/photo_397.jpg" alt="Slideshow image" class="slideshow-image">
             <!-- Add more images as needed -->
         </div>
-        
+        <p class="description-donation">This website and every connected page were created by me with a purpose in mind.<br> Although everything is free, if you enjoy it and the connections are useful to you, please consider making a <a href="https://www.globalgiving.org" target="_blank">donation to a deserving cause.</a>
+        </p>
         <div class="row">
             
             <div class="column">
@@ -1151,7 +1148,7 @@
             <div class="column">
                 <img src="photos/logo.png" alt="anto.b" width="100" style="margin-right: 20px;">
             <a href="photos/qrantob.png" target="_blank">
-            <img src="photos/qrantob.png" alt="anto.b" width="60" style="margin-right: 20px;"></a>
+            <img src="photos/qrantob.png" alt="anto.b" width="60" style="margin-right: 20px;"></a><img src="photos/gr.png" style="width: 90px; height: auto;">
 
             <p class="link-description">Since its creation in 2024, there has been no update to this page and there won't be one in the future. Apologies for broken links.</p>
             <p class="link-description">You are free to right-click to download an image. Credit &copy; Antonios Bouris. </p>
@@ -1468,7 +1465,7 @@ images.forEach((img, index) => {
 setInterval(changeImage, 8000);
 
     </script>
-    <footer>
+    <footer role="contentinfo">
         <div style="font-size: 12px; color: #757575; text-align: left;">
 
 
