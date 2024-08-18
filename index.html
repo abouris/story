@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <html lang="en">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="photos/favicon.png" type="image/png">
@@ -127,7 +126,7 @@
             margin-bottom: 40px;
             margin-right: 100px;
             font-size: 1.2em;
-            color: #e6e2b6;;
+            color: #e6e2b6;
         }
         /* Updated styling for the popup */
         #datePopup {
@@ -344,7 +343,7 @@
 
 <body>
     
-    <div id="descriptionPopup" class="popup">
+    <div id="descriptionPopup" class="popup" role="dialog">
         <div class="popup-content">
             <span id="closePopup" class="close">&times;</span>
             <h2>About Antonios' web corner</h2>
@@ -364,17 +363,18 @@
             <a href="photos/qrantob.png" target="_blank">
             <img src="photos/qrantob.png" alt="anto.b" width="100" style="margin-right: 20px;"></a></p>
             <p><span id="counter"></span></p>
-            <div id="searchContainer">
-                <input type="text" id="searchInput" placeholder="Search this page...">
+            <div id="searchContainer" role="search">
+                <input type="text" id="searchInput" placeholder="Search this page..." aria-label="Search input">
                 <button onclick="searchPage()">Search</button>
                 <button onclick="clearHighlights()">Clear</button>
-                <span id="searchResult"></span> <!-- Changed to <span> for inline display -->
+                <span id="searchResult" role="status" aria-live="polite"></span> <!-- Changed to <span> for inline display -->
             </div>
             
             
            
             
         </header>
+        <main role="main">
         <h1>Antonios' web corner - <a href="https://chatgpt.com/g/g-YmNDVYWZX-antonios-gpt" target="_blank" class="special-inline-link">Talk to me</a></h1>
 
         <div class="description">Enjoy a random collection of my photos and discover some valuable tools I've developed or modified. <br>Dive into a selection of timeless classic games, check my GPT assistants, download some work and...<br> be sure to <a href="#" onclick="bookmarkPage()">bookmark</a> this page because it's here to stay, at least as far as entropy allows. 😊</br>
@@ -384,7 +384,7 @@
             
         
         <div class="slideshow-container">
-            <img src="photos/photo_001.jpg" alt="Slideshow image" class="slideshow-image" active>
+            <img src="photos/photo_001.jpg" alt="Slideshow image" class="slideshow-image">
             <img src="photos/photo_002.jpg" alt="Slideshow image" class="slideshow-image">
             <img src="photos/photo_003.jpg" alt="Slideshow image" class="slideshow-image">
             <img src="photos/photo_004.jpg" alt="Slideshow image" class="slideshow-image">
@@ -777,13 +777,13 @@
             <img src="photos/photo_395.jpg" alt="Slideshow image" class="slideshow-image">
             <img src="photos/photo_396.jpg" alt="Slideshow image" class="slideshow-image">
             <img src="photos/photo_397.jpg" alt="Slideshow image" class="slideshow-image">
-            <!-- Add more images as needed -->
+           
         </div>
         <p class="description-donation">This website and every connected page were created by me with a purpose in mind.<br> Although everything is free, if you enjoy it and the connections are useful to you, please consider making a <a href="https://www.globalgiving.org" target="_blank">donation to a deserving cause.</a>
         </p>
         <div class="row">
             
-            <div class="column">
+            <div class="column" role="complementary">
                 <h2>tools</h2>
                 <ul>
                     <li>
@@ -846,10 +846,6 @@
                         <p class="link-description">Learn about a specific color</p>
                     </li>
                     <li>
-                        <a href="https://abouris.github.io/color_match" target="_blank">Color Match</a>
-                        <p class="link-description">Find the perfect color match</p>
-                    </li>
-                    <li>
                         <a href="https://abouris.github.io/markdown" target="_blank">Markdown a text</a>
                         <p class="link-description">Markdown Transformer</p>
                     </li>
@@ -883,7 +879,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="column">
+            <div class="column" role="complementary">
                 <h2>learn with fun</h2>
                 <ul>
                     <li>
@@ -959,7 +955,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="column">
+            <div class="column" role="complementary">
                 <h2>games</h2>
                 <ul>
                     <li>
@@ -1035,7 +1031,7 @@
                     </li>
                 </ul>
             </div>    
-            <div class="column">
+            <div class="column" role="complementary">
                     <h2>my openAI GPTs</h2>
                     <ul>
                         <li>
@@ -1108,7 +1104,7 @@
                     </ul>
             </div>
             
-            <div class="column">
+            <div class="column" role="complementary">
                 <h2>about</h2>
                 <ul>                    
                     <p class="link-description">I possess a strong foundation in problem-solving, leadership, and attention to detail. My approach is methodical, innovative, and fueled by creativity and curiosity. I apply critical reasoning, make informed decisions, and maintain precision in my work. However, I believe skills should continuously be honed and demonstrated in practice, rather than assumed.</p>
@@ -1118,7 +1114,7 @@
                     <p class="link-description">I am a Nikon, Kodachrome, Diesel, Parajumpers, Converse, Dr Martens, Adobe, Apple, Linux, Quest, Prusa, Midjourney and openAI guy 😎</p>
                 </ul>
             </div>
-            <div class="column">
+            <div class="column" role="complementary">
                 <h2>me</h2>
                 <ul>
                     <li>
@@ -1161,7 +1157,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="column">
+            <div class="column" role="complementary">
                 <img src="photos/logo.png" alt="anto.b" width="100" style="margin-right: 20px;">
             <a href="photos/qrantob.png" target="_blank">
             <img src="photos/qrantob.png" alt="anto.b" width="60" style="margin-right: 20px;"></a><img src="photos/gr.png" style="width: 90px; height: auto;">
@@ -1175,7 +1171,8 @@
             <p><a href="#" onclick="sendPageLinkByEmail()">Send this page URL by email</a></p>
             <p><a href="#" onclick="bookmarkPage()">Bookmark this page</a></p>
             <p><a href="mailto:antob.stories@gmail.com">antob.stories@gmail.com</a></p><p></p>
-           <div id="socialMediaLinks">
+           <div>
+            <nav id="socialMediaLinks" role="navigation" aria-label="Social media links">
             <a href="https://linkedin.com/in/antoniosbouris" target="_blank">
                 <i class="fa-brands fa-linkedin"></i>
             </a>
@@ -1197,18 +1194,18 @@
             <a href="https://soundcloud.com/antobouris" target="_blank">
                 <i class="fa-brands fa-soundcloud"></i>
             </a>
-            
+            </nav>
         </div>
         <p class="link-description">&copy; 2024 Antonios Bouris</p>
        
     </div>
     <div id="overlay"></div>
 
-    <div id="datePopup">
+    <div id="datePopup" role="dialog" aria-modal="true" aria-labelledby="popupMessage">
         <p id="popupMessage">Special event happening today!</p>
         <button onclick="closePopup()">Close</button>
     </div>
-
+</main>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         // Define your target dates and messages
@@ -1263,7 +1260,7 @@
       "termsConditions": "https://abouris.github.io/story",
       "privacyPolicy": "https://abouris.github.io/story",
       "emailAddress": "antob.stories@gmail.com",
-      "website": "https://https://abouris.github.io/story",
+      "website": "https://abouris.github.io/story",
 	  "stylesheet": "https://webchat-styler-css.botpress.app/prod/code/aa8e847c-c186-4abd-9784-c005f5bb6d11/v3997/style.css",
       "useSessionStorage": true,
 	  "showBotInfoPage": true,
@@ -1403,16 +1400,7 @@ function highlightAndCount(element, searchTerm) {
     return count;
 }
 
-            function clearHighlights() {
-                // Remove all highlighted elements
-                document.querySelectorAll('.highlight').forEach(el => {
-                    el.replaceWith(document.createTextNode(el.textContent));
-                });
-                // Clear the search input field
-                document.getElementById('searchInput').value = '';
-                // Clear the search result message
-                document.getElementById('searchResult').innerText = '';
-            }
+            
 
         function updateCounter() {
             // Set the specific date you want to count from
@@ -1452,13 +1440,14 @@ function highlightAndCount(element, searchTerm) {
             updateCounter();
         });
 
-        document.getElementById('openDescriptionPopup').onclick = function() {
-        document.getElementById('descriptionPopup').style.display = "block";
-    }
+        document.getElementById('openDescriptionPopup').addEventListener('click', function() {
+    document.getElementById('descriptionPopup').style.display = "block";
+});
 
-        document.getElementById('closePopup').onclick = function() {
-            document.getElementById('descriptionPopup').style.display = "none";
-        }
+document.getElementById('closePopup').addEventListener('click', function() {
+    document.getElementById('descriptionPopup').style.display = "none";
+});
+
 
         window.onclick = function(event) {
             const popup = document.getElementById('descriptionPopup');
@@ -1486,21 +1475,21 @@ setInterval(changeImage, 8000);
 
 
             <p>Disclaimer</p>
-            No Cookies Policy:<br>
+            <p>No Cookies Policy:</p>
             We do not use cookies or other tracking technologies on this website. Your browsing experience is completely private, and no personal information is collected automatically.<br>
             
-            Free Content Downloads:<br>
+            <p>Free Content Downloads:</p>
             All content available for download on this website is provided free of charge. By downloading any content, you agree that you will use it only for personal or educational purposes and will not redistribute it without prior permission.<br>
             
-            Use It As-Is:<br>
+            <p>Use It As-Is:</p>
             The content and resources provided on this website are offered "as is," without any guarantees or warranties, either express or implied. We do not guarantee that the content is free of errors or that it will meet your specific needs. You are responsible for any use of the content, and we will not be liable for any damages resulting from its use.<br>
             
-            No Liability:<br>
+           <p>No Liability:</p>
             We are not responsible for any consequences that may arise from using the content provided on this website. You agree to use all resources at your own risk.<br>
             
-            Changes to Disclaimer:<br>
+            <p>Changes to Disclaimer:</p>
             I will never update or modify this disclaimer at any time. 
-            </div>
+        </div>
     </footer>
 </body>
 </html>
